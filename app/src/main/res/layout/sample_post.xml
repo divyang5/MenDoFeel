@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="MenDo"
+            type="com.example.mendofeel.MenDo"
+            />
+        <variable
+            name="Choice"
+            type="com.example.mendofeel.Choice" />
+        <variable
+            name="Result"
+            type="com.example.mendofeel.Result" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="1dp"
+        >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="3dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/profile_image"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic__user"
+                        android:layout_gravity="center" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_gravity="center">
+
+
+                        <TextView
+                            android:id="@+id/username"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{Result.fullname}"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/timeAgo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:alpha="4"
+                            android:text="time ago"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+                    <ImageView
+                        android:id="@+id/popmenu"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        app:srcCompat="@drawable/ic_menu" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/questiontext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minHeight="20dp"
+                    android:padding="10dp"
+                    android:text="@{Result.question}"
+                    android:textSize="18sp"
+                    android:textStyle="bold|italic" />
+
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pollLayout"
+                    android:padding="10dp">
+
+                    <SeekBar
+                        android:id="@+id/poll1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:max="100"
+                        android:progress="25"
+                        android:progressDrawable="@drawable/custom_progress"
+                        android:layout_marginBottom="15dp"
+                        android:textAlignment="textStart"
+                        android:thumb="@color/white"
+                        app:layout_constraintBottom_toTopOf="@+id/poll2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                    </SeekBar>
+
+                    <TextView
+                        android:id="@+id/poll1PerText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="45dp"
+                        android:paddingStart="30dp"
+                        android:paddingEnd="0dp"
+                        android:text="@{Choice.choice_text}"
+                        android:textStyle="bold"
+                        android:layout_marginTop="16dp"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/poll1"
+                        app:layout_constraintEnd_toEndOf="@+id/poll1"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/poll1"
+                        app:layout_constraintTop_toTopOf="@+id/poll1">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/poll1per"
+                        android:layout_width="wrap_content"
+                        android:layout_height="45dp"
+                        android:paddingEnd="30dp"
+                        android:paddingStart="0dp"
+                        android:text="@{Choice.percentage}"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center_vertical"
+                        app:layout_constraintBottom_toBottomOf="@+id/poll1"
+                        app:layout_constraintEnd_toEndOf="@+id/poll1">
+
+                    </TextView>
+
+                    <SeekBar
+                        android:id="@+id/poll2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:max="100"
+                        android:progress="100"
+                        android:layout_marginBottom="20dp"
+                        android:progressDrawable="@drawable/custom_progress"
+                        android:textAlignment="textStart"
+                        android:thumb="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                    </SeekBar>
+                    <TextView
+                        android:id="@+id/poll2PerText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="45dp"
+                        android:paddingStart="30dp"
+                        android:paddingEnd="0dp"
+                        android:text="@{Choice.choice_text}"
+                        android:textStyle="bold"
+                        android:layout_marginTop="16dp"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/poll2"
+                        app:layout_constraintEnd_toEndOf="@+id/poll2"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/poll2"
+                        app:layout_constraintTop_toTopOf="@+id/poll2">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/poll2per"
+                        android:layout_width="wrap_content"
+                        android:layout_height="45dp"
+                        android:paddingEnd="30dp"
+                        android:paddingStart="0dp"
+                        android:text="@{Choice.percentage}"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center_vertical"
+                        app:layout_constraintBottom_toBottomOf="@+id/poll2"
+                        app:layout_constraintEnd_toEndOf="@+id/poll2">
+
+                    </TextView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ImageView
+                    android:id="@+id/post_photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_line_red" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/likeImage"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        app:srcCompat="@drawable/ic__like_outline" />
+
+                    <TextView
+                        android:id="@+id/likescount"
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@{Result.likescount}"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_marginRight="20dp" />
+
+                    <ImageView
+                        android:id="@+id/commentimage"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        app:srcCompat="@drawable/ic_comment" />
+
+                    <TextView
+                        android:id="@+id/commentscount"
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:text="@{Result.commentscount}"
+                        android:layout_marginRight="20dp" />
+
+                    <ImageView
+                        android:id="@+id/shareimage"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        app:srcCompat="@drawable/ic_share" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</layout>
